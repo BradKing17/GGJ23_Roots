@@ -7,14 +7,13 @@ using Newtonsoft.Json.Linq;
 
 public class InputManager : MonoBehaviour
 {
-    public string action;
-    public int directionX = 0;
-    public int directionY = 0;
+    public bool gameStarted = false;
+
     public Text playersText;
-
     public GameObject rootObj;
-    public GameObject[] roots;
+    public List<GameObject> roots;
 
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -25,28 +24,32 @@ public class InputManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        playersText.text = "PLAYERS: " + AirConsole.instance.GetActivePlayerDeviceIds.Count;
-        this.gameObject.transform.Translate(new Vector3(directionX, directionY));
+
     }
 
     void OnMessage(int device_id, JToken data)
     {
+        Debug.Log(device_id + ", " + (float)data["move"]);
         int player_id = AirConsole.instance.ConvertDeviceIdToPlayerNumber(device_id);
         if(player_id != -1)
         {
-
+            roots[player_id].transform.position += new Vector3(0, (float)data["move"], 0);
         }
     }
 
     void OnConnect(int device_id)
     {
-        if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 0)
+        if (!gameStarted)
         {
-            if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
+            if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 0)
             {
-                StartGame();
+                playersText.text = "PLAYERS: " + AirConsole.instance.GetControllerDeviceIds().Count.ToString();
+                if (AirConsole.instance.GetControllerDeviceIds().Count >= 3)
+                {
+                    StartGame();
+                }
             }
         }
     }
@@ -70,10 +73,12 @@ public class InputManager : MonoBehaviour
     }
     void StartGame()
     {
+        gameStarted = true;
         Debug.Log("STARTING");
         for(int i = 0; i < AirConsole.instance.GetControllerDeviceIds().Count; i++)
         {
             var clone = Instantiate(rootObj);
+            roots.Add(clone);
         }
     
     }
