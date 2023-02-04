@@ -28,6 +28,7 @@ public class RootController : MonoBehaviour
         playerActions = new RootPlayerActions();
         playerActions.Enable();
         curPointTimer = pointTimer;
+        var gamepad = Gamepad.current;
 
         // joystickInput = new Vector2(0, 0);
     }
