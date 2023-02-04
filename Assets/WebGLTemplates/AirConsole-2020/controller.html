@@ -1,0 +1,13 @@
+<script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.8.0.js"></script>
+
+function init()
+{
+    var air_console = new AirConsole();
+
+    var message = {
+        'action' : 'move',
+        'info' : { 'directionX' : 0, 'directionY' : 1 }
+    };
+
+    air_console.message(AirConsole.SCREEN, message);
+}
