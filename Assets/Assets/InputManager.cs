@@ -12,6 +12,9 @@ public class InputManager : MonoBehaviour
     public int directionY = 0;
     public Text playersText;
 
+    public GameObject rootObj;
+    public GameObject[] roots;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +27,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        playersText.text = "PLAYERS: " + AirConsole.instance.GetActivePlayerDeviceIds.Count;
         this.gameObject.transform.Translate(new Vector3(directionX, directionY));
     }
 
@@ -34,9 +38,6 @@ public class InputManager : MonoBehaviour
         {
 
         }
-        action = (string)data["action"];
-        directionX = (int)data["directionX"];
-        directionY = (int)data["directionY"];
     }
 
     void OnConnect(int device_id)
@@ -45,11 +46,7 @@ public class InputManager : MonoBehaviour
         {
             if (AirConsole.instance.GetControllerDeviceIds().Count >= 2)
             {
-                //Show Start game button
-            }
-            else
-            {
-                playersText.text = "NEED MORE PLAYERS";
+                StartGame();
             }
         }
     }
@@ -71,7 +68,15 @@ public class InputManager : MonoBehaviour
             }
         }
     }
-
+    void StartGame()
+    {
+        Debug.Log("STARTING");
+        for(int i = 0; i < AirConsole.instance.GetControllerDeviceIds().Count; i++)
+        {
+            var clone = Instantiate(rootObj);
+        }
+    
+    }
     void ResetGame()
     {
 
