@@ -600,13 +600,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750083285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -23.99, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 5, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &900667886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4226955561265255347, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+  m_PrefabInstance: {fileID: 4226955562014526045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be3c156606430845b3a93009e0bd899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1009092471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1378,94 @@ PrefabInstance:
     - target: {fileID: 4226955561265255344, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
       propertyPath: m_Name
       value: Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_AllowJoining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_JoinBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 1365421315864439216, guid: 8d397cee63d1712479a2f70bd2a47c02, type: 3}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 3ada9218-7ab1-4be4-83c1-c793f6afae05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 900667886}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 900667886}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayerJoined
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpawnController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerLeftEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226955561265255346, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.InputSystem.PlayerInput, Unity.InputSystem
       objectReference: {fileID: 0}
     - target: {fileID: 4226955561265255347, guid: bf8b07e7277b8c7418b6082f084f28dc, type: 3}
       propertyPath: winText
