@@ -28,6 +28,9 @@ public class MeshGenController : MonoBehaviour
     public Mesh _mesh;
     public MeshFilter _meshfilter;
     public MeshRenderer _meshRenderer;
+
+    SpawnController SC;
+    public GameObject manager;
     // Start is called before the first frame update
  
     void Start()
@@ -78,24 +81,28 @@ public class MeshGenController : MonoBehaviour
     }
     void DropPoint()
     {
-        var mTP = this.transform.position;
-        for (int i = 0; i < players.Capacity; i++)
+        if(manager.GetComponent<SpawnController>().gameRunning)
         {
-            curPointTimer = pointTimer;
-            Debug.Log(curPointTimer);
+            var mTP = this.transform.position;
+            for (int i = 0; i < players.Capacity; i++)
+            {
+                curPointTimer = pointTimer;
+                Debug.Log(curPointTimer);
 
-            print("ding");
+                print("ding");
 
-            var clone = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            pointCount++;
-            clone.name = "Point " + pointCount.ToString();
-            clone.transform.localScale  = new Vector3(0.4f, 0.4f, 0.4f);
-            
-            clone.transform.parent      = this.transform.GetChild(0);
-            clone.transform.position    = new Vector3( playerPos[i].x,playerPos[i].y, playerPos[i].z);
-            print("dong");
-            Physics.IgnoreCollision(clone.GetComponent<Collider>(), players[i].GetComponent<Collider>());
+                var clone = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                pointCount++;
+                clone.name = "Point " + pointCount.ToString();
+                clone.transform.localScale  = new Vector3(0.4f, 0.4f, 0.4f);
+                
+                clone.transform.parent      = this.transform.GetChild(0);
+                clone.transform.position    = new Vector3( playerPos[i].x,playerPos[i].y, playerPos[i].z);
+                print("dong");
+                Physics.IgnoreCollision(clone.GetComponent<Collider>(), players[i].GetComponent<Collider>());
+            }
         }
+        
         
     }
 
