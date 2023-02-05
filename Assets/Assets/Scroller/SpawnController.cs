@@ -59,7 +59,6 @@ public class SpawnController : MonoBehaviour
 
     void SpawnItems()
     {
-        Debug.Log(objTimer);
         
         if(objTimer <= 0.0f)
         {
@@ -67,7 +66,7 @@ public class SpawnController : MonoBehaviour
             if (objectSpawns[spawnPoint].transform.childCount == 0)
             {
                 int obj = Random.Range(0, items.Count);
-                Debug.Log(spawnPoint);
+
                 var clone = Instantiate(items[obj], objectSpawns[spawnPoint].transform);
                 objTimer = 4.0f;
             }

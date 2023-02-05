@@ -64,31 +64,39 @@ public class RootController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context) => input = context.ReadValue<Vector2>();
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        if(other.CompareTag("Obstacle"))
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.CompareTag("Obstacle"))
         {
             Death();
         }
-        isPoweredUp = true;
-        StartCoroutine(PowerTimer());
-        if (isPoweredUp)
+        else
         {
-            switch (other.tag)
+            if (!isPoweredUp)
             {
-                case "Fertilizer":
-                    curSpeed = curSpeed * 2.0f;
-                    curTurnSpeed = curTurnSpeed * 2.0f;
-                    break;
+                isPoweredUp = true;
+                StartCoroutine(PowerTimer());
+                if (isPoweredUp)
+                {
+                    switch (other.gameObject.tag)
+                    {
+                        case "Fertilizer":
+                            curSpeed = curSpeed * 2.0f;
+                            curTurnSpeed = curTurnSpeed * 2.0f;
+                            break;
 
-                case "Water":
-                    break;
+                        case "Water":
+                            break;
 
-                case "Toxic":
-                    curSpeed = curSpeed * 0.5f;
-                    curTurnSpeed = curTurnSpeed * 0.5f;
-                    break;
+                        case "Toxic":
+                            curSpeed = curSpeed * 0.5f;
+                            curTurnSpeed = curTurnSpeed * 0.5f;
+                            break;
 
+                    }
+                }
+                Destroy(other.gameObject);
             }
         }
     }
