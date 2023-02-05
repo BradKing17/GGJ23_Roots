@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365421315864439216}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -157,10 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac5bcaf8d04c3c4abd4f6903d8db3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 2
-  maxSpeed: 5
-  turnSpeed: 50
+  isGrowing: 1
+  avgSpeed: 3
   curSpeed: 4
-  input: {x: 0, y: 0}
+  curTurnSpeed: 50
+  avgTurnSpeed: 50
   guide: {fileID: 1365421315864439216}
-  pointTimer: 0.2
