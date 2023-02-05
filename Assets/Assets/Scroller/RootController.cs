@@ -7,6 +7,7 @@ public class RootController : MonoBehaviour
 {
     public bool isGrowing = true;
     public RootPlayerActions playerActions;
+    public int playerIndex;
 
 
     public float avgSpeed = 3;
@@ -25,14 +26,13 @@ public class RootController : MonoBehaviour
 
     float powerUpTimer = 5.0f;
     bool isPoweredUp = false;
-    public Gamepad gamepad;
 
     // Start is called before the first frame update
     void Start()
     {
         playerActions = new RootPlayerActions();
         playerActions.Enable();
-        var gamepad = Gamepad.current;
+
 
         // joystickInput = new Vector2(0, 0);
     }

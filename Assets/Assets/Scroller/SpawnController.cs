@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SpawnController : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class SpawnController : MonoBehaviour
     public bool gameRunning = false;
     public float objTimer = 4;
 
+    public TMP_Text startText;
+    public TMP_Text winText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +29,12 @@ public class SpawnController : MonoBehaviour
             var clone = PlayerInput.Instantiate(rootObj, playerIndex: i, pairWithDevice: Gamepad.all[i]);
             players.Add(clone.GetComponent<RootController>());
             players[i].isGrowing = false;
+            players[i].playerIndex = i + 1;
             Debug.Log(i);
             clone.gameObject.transform.SetPositionAndRotation(spawnPoints[i].transform.position, spawnPoints[i].transform.rotation);
 
         }
+        winText.enabled = false;
 
         StartCoroutine(StartCountDown());
     }
@@ -38,17 +45,41 @@ public class SpawnController : MonoBehaviour
         if(gameRunning)
         {
             SpawnItems();
+            for(int i = 0; i < players.Count; i++)
+            {
+                if(players[i].isGrowing == false)
+                {
+                    players.Remove(players[i]);
+                }
+
+                if(players.Count == 1)
+                {
+                    WinState();
+                }
+            }
         }
     }
 
     IEnumerator StartCountDown()
     {
-        yield return new WaitForSeconds(5);
+        float duration = 5f; // 3 seconds you can change this to
+                             //to whatever you want
+        float totalTime = 0;
+        while (totalTime <= duration)
+        {
+            totalTime += Time.deltaTime;
+            var integer = (int)totalTime; /* choose how to quantize this */
+                                          /* convert integer to string and assign to text */
+            startText.text = "STARTING IN " + (duration - integer);
+            yield return null;
+        }
+
         StartGame();
     }
 
     void StartGame()
     {
+        startText.enabled = false;
         for (int i = 0; i < players.Count; i++)
         {
             players[i].isGrowing = true;
@@ -75,5 +106,12 @@ public class SpawnController : MonoBehaviour
         {
             objTimer -= Time.deltaTime;
         }
+    }
+
+    void WinState()
+    {
+        Debug.Log("WIN");
+        winText.enabled = true;
+        winText.text = "PLAYER " + players[0].playerIndex + " WINS!";
     }
 }

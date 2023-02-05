@@ -97,5 +97,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  objectSpawns: []
-  items: []
+  objectSpawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  items:
+  - {fileID: 5270942819373078409, guid: f485c5b115df3db4b88a974143725b34, type: 3}
+  - {fileID: 2066942875770506724, guid: e00bf0120a772f14d9cf57a8acb7d42d, type: 3}
+  - {fileID: 7121385324179430049, guid: 31f8baa1e9f5d8d40aa604c38aab0d3f, type: 3}
+  gameRunning: 0
+  objTimer: 4
