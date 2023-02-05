@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: f21abfc1d57097240957be392ab5e1d2, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -125,7 +125,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1365421316094859044}
+        m_TargetAssemblyTypeName: RootController, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1033384c-9531-4ccb-a2c8-9a04a05a1ac8
     m_ActionName: Player/Movement
   m_NeverAutoSwitchControlSchemes: 0
@@ -149,5 +161,6 @@ MonoBehaviour:
   maxSpeed: 5
   turnSpeed: 50
   curSpeed: 4
+  input: {x: 0, y: 0}
   guide: {fileID: 1365421315864439216}
   pointTimer: 0.2

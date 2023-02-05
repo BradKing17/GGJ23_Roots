@@ -14,6 +14,8 @@ public class RootController : MonoBehaviour
 
     public int curSpeed = 4;
 
+    public Vector2 input;
+
     List<GameObject> points;
     public GameObject guide;
     public float pointTimer = 0.2f;
@@ -21,6 +23,7 @@ public class RootController : MonoBehaviour
 
     float powerUpTimer = 5.0f;
     bool isPoweredUp = false;
+    public Gamepad gamepad;
 
     // Start is called before the first frame update
     void Start()
@@ -48,14 +51,16 @@ public class RootController : MonoBehaviour
     {
         if (isGrowing)
         {
-            //Movement
-            Vector2 input = playerActions.Player.Movement.ReadValue<Vector2>();
-            Debug.Log(input);
-            float hAxis = input.x  * turnSpeed * Time.deltaTime;
+            {
+                //Movement
+                
+                Debug.Log(input);
+                float hAxis = input.x * turnSpeed * Time.deltaTime;
 
-            transform.Rotate(0, hAxis, 0);
-            this.transform.Translate(this.transform.forward * curSpeed * Time.deltaTime);
-
+                transform.Rotate(0, hAxis, 0);
+            }
+                this.transform.Translate(this.transform.forward * curSpeed * Time.deltaTime);
+           
 
             //Point Dropping
             if (curPointTimer >= 0.0f)
@@ -71,6 +76,8 @@ public class RootController : MonoBehaviour
             }
         }
     }
+
+    public void OnMove(InputAction.CallbackContext context) => input = context.ReadValue<Vector2>();
 
     void DropPoint()
     {

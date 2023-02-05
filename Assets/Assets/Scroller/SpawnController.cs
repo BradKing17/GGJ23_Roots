@@ -7,6 +7,7 @@ public class SpawnController : MonoBehaviour
 {
     public int noOfPlayers = 0;
     public GameObject rootObj;
+    public List<RootController> players;
     public List<GameObject> spawnPoints;
 
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class SpawnController : MonoBehaviour
         for(int i = 0; i < noOfPlayers; i++)
         {
             var clone = Instantiate(rootObj, spawnPoints[i].transform);
+            clone.GetComponent<RootController>().gamepad = Gamepad.all[i];
         }
     }
 
