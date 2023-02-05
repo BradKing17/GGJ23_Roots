@@ -22,6 +22,8 @@ public class SpawnController : MonoBehaviour
     public TMP_Text startText;
     public TMP_Text winText;
 
+    public Canvas UIcanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +108,7 @@ public class SpawnController : MonoBehaviour
     void StartGame()
     {
         startText.enabled = false;
+        UIcanvas.enabled = false;
         for (int i = 0; i < players.Count; i++)
         {
             players[i].isGrowing = true;
@@ -137,6 +140,7 @@ public class SpawnController : MonoBehaviour
     void WinState()
     {
         Debug.Log("WIN");
+        UIcanvas.enabled = true;
         winText.enabled = true;
         winText.text = "PLAYER " + players[0].playerIndex + " WINS!";
     }
