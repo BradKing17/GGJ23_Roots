@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.UI;
 
 public class SpawnController : MonoBehaviour
 {
     public int noOfPlayers = 0;
+    List<Gamepad> activePads;
     public GameObject rootObj;
     public List<RootController> players;
     public List<GameObject> spawnPoints;
@@ -23,26 +25,38 @@ public class SpawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        noOfPlayers = Gamepad.all.Count;
-        for (int i = 0; i < noOfPlayers; i++)
-        {
-            var clone = PlayerInput.Instantiate(rootObj, playerIndex: i, pairWithDevice: Gamepad.all[i]);
-            players.Add(clone.GetComponent<RootController>());
-            players[i].isGrowing = false;
-            players[i].playerIndex = i + 1;
-            Debug.Log(i);
-            clone.gameObject.transform.SetPositionAndRotation(spawnPoints[i].transform.position, spawnPoints[i].transform.rotation);
+        gameRunning = false;
+    }
 
-        }
-        winText.enabled = false;
+    public void OnPlayerJoined(PlayerInput playerInput)
+    {
+        RootController controller = playerInput.gameObject.GetComponent<RootController>();
+        controller.playerIndex = noOfPlayers;
+        players.Add(controller);
+        controller.isGrowing = false;
+        playerInput.gameObject.transform.SetPositionAndRotation(spawnPoints[noOfPlayers].transform.position, spawnPoints[noOfPlayers].transform.rotation);
+        noOfPlayers++;
 
-        StartCoroutine(StartCountDown());
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(gameRunning)
+        if (noOfPlayers >= 2)
+        {
+
+            startText.text = "PRESS ANY BUTTON TO START";
+
+            InitGame();
+
+        }
+        else
+        {
+            startText.text = "WAITING FOR PLAYERS";
+        }
+
+        if (gameRunning)
         {
             SpawnItems();
             for(int i = 0; i < players.Count; i++)
@@ -60,6 +74,18 @@ public class SpawnController : MonoBehaviour
         }
     }
 
+    
+
+    void InitGame()
+    {
+    InputSystem.onAnyButtonPress.Call(
+    confirm =>
+    {
+        winText.enabled = false;
+        StartCoroutine(StartCountDown());
+    });
+    }
+                    
     IEnumerator StartCountDown()
     {
         float duration = 5f; // 3 seconds you can change this to
