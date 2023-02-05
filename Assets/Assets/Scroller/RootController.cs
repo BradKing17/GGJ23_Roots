@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class RootController : MonoBehaviour
 {
-    bool isGrowing = true;
+    public bool isGrowing = true;
     public RootPlayerActions playerActions;
 
     public int minSpeed = 2;
@@ -14,7 +14,7 @@ public class RootController : MonoBehaviour
 
     public int curSpeed = 4;
 
-    public Vector2 input;
+    private Vector2 input;
 
     List<GameObject> points;
     public GameObject guide;
@@ -31,14 +31,13 @@ public class RootController : MonoBehaviour
         playerActions = new RootPlayerActions();
         playerActions.Enable();
         curPointTimer = pointTimer;
-        var gamepad = Gamepad.current;
 
         // joystickInput = new Vector2(0, 0);
     }
 
     private void OnEnable()
     {
-        playerActions.Enable();
+       // playerActions.Enable();
     }
 
     private void OnDisable()
@@ -47,20 +46,17 @@ public class RootController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (isGrowing)
         {
-            {
-                //Movement
-                
-                Debug.Log(input);
-                float hAxis = input.x * turnSpeed * Time.deltaTime;
 
+            this.transform.Translate(this.gameObject.transform.forward * curSpeed * Time.deltaTime);
+
+                float hAxis = input.x * turnSpeed * Time.deltaTime;
                 transform.Rotate(0, hAxis, 0);
-            }
-                this.transform.Translate(this.transform.forward * curSpeed * Time.deltaTime);
-           
+
+
 
             //Point Dropping
             if (curPointTimer >= 0.0f)

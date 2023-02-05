@@ -16,9 +16,15 @@ public class SpawnController : MonoBehaviour
         noOfPlayers = Gamepad.all.Count;
         for(int i = 0; i < noOfPlayers; i++)
         {
-            var clone = Instantiate(rootObj, spawnPoints[i].transform);
-            clone.GetComponent<RootController>().gamepad = Gamepad.all[i];
+            var clone = PlayerInput.Instantiate(rootObj, playerIndex: i, pairWithDevice: Gamepad.all[i]);
+            players.Add(clone.GetComponent<RootController>());
+            players[i].isGrowing = false;
+            Debug.Log(i);
+            clone.gameObject.transform.SetPositionAndRotation(spawnPoints[i].transform.position, spawnPoints[i].transform.rotation);
+
         }
+
+        StartCoroutine(StartCountDown());
     }
 
     // Update is called once per frame
@@ -26,4 +32,19 @@ public class SpawnController : MonoBehaviour
     {
         
     }
+
+    IEnumerator StartCountDown()
+    {
+        yield return new WaitForSeconds(5);
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        for(int i= 0; i <players.Count; i++)
+        {
+            players[i].isGrowing = true;
+        }
+    }
+     
 }
