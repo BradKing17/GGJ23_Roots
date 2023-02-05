@@ -21,8 +21,9 @@ public class RootController : MonoBehaviour
 
     List<GameObject> points;
     public GameObject guide;
-    
-    
+
+    float curPointTimer = 0;
+    float pointTimer = 0.2f;
 
     float powerUpTimer = 5.0f;
     bool isPoweredUp = false;
@@ -58,7 +59,20 @@ public class RootController : MonoBehaviour
                 float hAxis = input.x * curTurnSpeed * Time.deltaTime;
                 transform.Rotate(0, hAxis, 0, Space.Self);
 
-            
+
+            //Point Dropping
+            if (curPointTimer >= 0.0f)
+            {
+                curPointTimer -= Time.deltaTime;
+            }
+            else
+            {
+
+                dropPoint();
+
+
+            }
+
         }
     }
 
@@ -114,7 +128,19 @@ public class RootController : MonoBehaviour
         isPoweredUp = false;
         curSpeed = avgSpeed;
         curTurnSpeed = avgTurnSpeed;
+    }
 
+    void dropPoint()
+    {
+        curPointTimer = pointTimer;
+        Debug.Log("poop");
+        Debug.Log(curPointTimer);
+
+        var clone = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        clone.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        clone.transform.position = this.transform.position;
+        clone.tag = "Obstacle";
+        Physics.IgnoreCollision(clone.GetComponent<Collider>(), this.gameObject.GetComponent<Collider>());
     }
 
 }

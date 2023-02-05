@@ -141,6 +141,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1033384c-9531-4ccb-a2c8-9a04a05a1ac8
     m_ActionName: Player/Movement
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e3806ee6-89a2-4558-9083-7a3205733d29
+    m_ActionName: Player/Confirm[/XInputControllerWindows/buttonSouth,/DualSenseGamepadHID/buttonSouth,/DualSenseGamepadHID1/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -160,8 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrowing: 1
   playerIndex: 0
-  avgSpeed: 5
-  curSpeed: 5
+  avgSpeed: 3
+  curSpeed: 3
   curTurnSpeed: 50
   avgTurnSpeed: 50
   guide: {fileID: 1365421315864439216}

@@ -23,6 +23,7 @@ public class SpawnController : MonoBehaviour
     public TMP_Text winText;
 
     public Canvas UIcanvas;
+    public Image Logo;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +69,10 @@ public class SpawnController : MonoBehaviour
                     players.Remove(players[i]);
                 }
 
-                // if(players.Count == 1)
-                // {
-                //     WinState();
-                // }
+                 if(players.Count == 1)
+                 {
+                    WinState();
+                 }
             }
         }
     }
@@ -139,7 +140,9 @@ public class SpawnController : MonoBehaviour
 
     void WinState()
     {
+        gameRunning = false;
         Debug.Log("WIN");
+        Logo.enabled = false;
         UIcanvas.enabled = true;
         winText.enabled = true;
         winText.text = "PLAYER " + players[0].playerIndex + " WINS!";
