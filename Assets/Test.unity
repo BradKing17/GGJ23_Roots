@@ -153,8 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be3c156606430845b3a93009e0bd899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noOfPlayers: 4
+  noOfPlayers: 0
   rootObj: {fileID: 1365421315864439216, guid: 8d397cee63d1712479a2f70bd2a47c02, type: 3}
+  players: []
   spawnPoints:
   - {fileID: 1969654287}
   - {fileID: 2025001214}
