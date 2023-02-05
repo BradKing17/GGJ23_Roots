@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7716689694377007247}
   m_Layer: 0
   m_Name: Guide
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrowing: 1
+  playerIndex: 0
   avgSpeed: 5
   curSpeed: 5
   curTurnSpeed: 50

@@ -52,10 +52,10 @@ public class SpawnController : MonoBehaviour
                     players.Remove(players[i]);
                 }
 
-                if(players.Count == 1)
-                {
-                    WinState();
-                }
+                // if(players.Count == 1)
+                // {
+                //     WinState();
+                // }
             }
         }
     }
